@@ -11,7 +11,7 @@ function HomePage() {
   const [arriveCode, setArriveCode] = React.useState("ACY");
   const [departDate, setDepartDate] = React.useState("");
   const [returnDate, setReturnDate] = React.useState("");
-  const [passengers, setPassengers] = React.useState("");
+  const [passengers, setPassengers] = React.useState("1");
   const [flightData, setFlightData] = React.useState([]);
 
   return (
