@@ -30,6 +30,11 @@ def get_token():
 def serve():
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.errorhandler(404)
+@cross_origin()
+def not_found(e):
+    return app.send_static_file('index.html')
+
 @app.route('/api', methods=['POST'])
 @cross_origin()
 def api():
