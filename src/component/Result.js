@@ -3,7 +3,7 @@ import "./Result.css";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import sampleResults from "../data/sampleResults.json";
+import fakeResults from "../data/fakeResults.json";
 import Map from "./Map";
 import { Modal, Button, Container, Accordion, ScrollView } from "react-bootstrap";
 import axios from "axios";
@@ -26,7 +26,7 @@ function Test(flightData) {
   //   return <div></div>;
   // }
 
-  return sampleResults.map((result) => (
+  return fakeResults.map((result) => (
     <Row className="result-card mx-auto">
       <Col>
         <Card className="result">
