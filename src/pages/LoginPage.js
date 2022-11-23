@@ -26,7 +26,7 @@ function LoginPage() {
       <div className="left-side">
         <img src={logo} alt="CKT logo" />
         <h1>CKT, find all your travel needs!</h1>
-        <h5>Please login to your account</h5>
+        <h5>Please login to your account below</h5>
         <form className="loginForm">
           <input
             className="loginInput"
