@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../component/Header";
-import TripForm from "../component/TripForm";
+// import TripForm from "../component/TripForm";
 import Map from "../component/Map";
-import Result from "../component/Result";
+// import Result from "../component/Result";
 
 import "./HomePage.css";
 
@@ -17,7 +17,8 @@ function HomePage() {
   return (
     <div className="homepage">
       <Header />
-      <Map departCode={departCode}
+      <Map
+        departCode={departCode}
         arriveCode={arriveCode}
         departDate={departDate}
         returnDate={returnDate}
@@ -28,7 +29,8 @@ function HomePage() {
         setDepartDate={setDepartDate}
         setReturnDate={setReturnDate}
         setPassengers={setPassengers}
-        setFlightData={setFlightData}/>
+        setFlightData={setFlightData}
+      />
     </div>
   );
 }

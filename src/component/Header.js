@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Header.css";
-import bg from "../assets/formbg.png";
 import { Dropdown } from "react-bootstrap";
 
 function Header() {

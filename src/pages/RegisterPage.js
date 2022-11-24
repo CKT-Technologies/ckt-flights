@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [airport, setAirport] = useState("MSP");
 
   const history = useNavigate();
 
@@ -37,6 +40,8 @@ function RegisterPage() {
             type="text"
             placeholder="First name"
             name="fName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
             required
           />
           <input
@@ -44,6 +49,8 @@ function RegisterPage() {
             type="text"
             placeholder="Last name"
             name="lName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             required
           />
           <input
@@ -51,6 +58,8 @@ function RegisterPage() {
             type="email"
             placeholder="Email"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
@@ -58,6 +67,8 @@ function RegisterPage() {
             type="password"
             placeholder="Password"
             name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <input
@@ -72,6 +83,8 @@ function RegisterPage() {
             type="text"
             placeholder="Home airport (3 letter airport code)"
             name="airport"
+            value={airport}
+            onChange={(e) => setAirport(e.target.value)}
           />
         </form>
         <button onClick={register} className="registerButton">
