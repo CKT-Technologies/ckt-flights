@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import fakeResults from "../data/fakeResults.json";
+import sampleResults from "../data/sampleResults.json";
 import Map from "./Map";
 import {
   Modal,
@@ -27,9 +28,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Test(flightData) {
-  flightData = flightData.flightData;
-  // if (flightData.length === 0) {
-  //   return <div></div>;
+  flightData = flightData.flightData.flightData;
+  console.log(flightData.length);
+  // if (flightData.len === 0) {
+  //   return <div>ytdf</div>;
   // }
 
   return fakeResults.map((result) => (
@@ -72,17 +74,17 @@ function Test(flightData) {
         <Card.Body>
           <Card.Title><FontAwesomeIcon icon={faMoneyBill1} /> Price</Card.Title>
           <Card.Text><FontAwesomeIcon icon={faDollarSign} /> {result.price}</Card.Text>
-          <Button className="nextButton btn-ckt" onClick={console.log("Deets clicked")}>Details</Button>
+          <Button className="btn-ckt">Details</Button>
         </Card.Body>
       </Col>
     </Row>
   ));
 }
 
-function Result() {
+function Result(flightData) {
   return (
     <Container fluid className="result-container">
-      <Test />
+      <Test flightData={flightData}/>
     </Container>
   );
 }

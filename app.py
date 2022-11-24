@@ -98,7 +98,7 @@ def api():
                                 }
                 segment_list.append(segment_dict)
             itinerary_list.append({f"{'Departure' if itinerary == 1 else 'Return'}": segment_list})
-        dict_list.append({f"flightOffer{flight}": itinerary_list})
+        dict_list.append({f"flightOffer": itinerary_list})
 
     print(dict_list)
     return jsonify(dict_list)
