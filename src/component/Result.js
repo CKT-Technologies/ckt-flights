@@ -28,16 +28,14 @@ function Test(flightData) {
 
   return fakeResults.map((result) => (
     <Row className="result-card mx-auto">
-      <Col>
-        <Card className="result">
+      <Col className="result">
           <Card.Body>
-            <Card.Title className="text-center">
+            
+            <Card.Title className="result-title">
               {result.airlineDestination}{" "}
               <FontAwesomeIcon icon={faArrowRightToBracket} />
             </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {/* Can add Subtitle if you want */}
-            </Card.Subtitle>
+
             <Row>
               <Col>
                 <Card.Text>
@@ -73,18 +71,15 @@ function Test(flightData) {
               </Col>
             </Row>
           </Card.Body>
-        </Card>
       </Col>
-      <Col>
-        <Card className="result">
+      <Col className="result">
           <Card.Body>
-            <Card.Title className="text-center">
+
+          < Card.Title className="result-title">
               <FontAwesomeIcon icon={faArrowRightFromBracket} />{" "}
-              {result.airlineReturn}
-            </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {/* Can add Subtitle if you want */}
-            </Card.Subtitle>
+              Return Route            
+              </Card.Title>
+
             <Row>
               <Col>
                 <Card.Text>
@@ -118,10 +113,8 @@ function Test(flightData) {
               </Col>
             </Row>
           </Card.Body>
-        </Card>
       </Col>
-      <Col md={2}>
-        <Card className="result">
+      <Col md={2} className="result">
           <Card.Body>
             <Card.Title>
               <FontAwesomeIcon icon={faMoneyBill1} /> Price
@@ -134,7 +127,6 @@ function Test(flightData) {
       </Button>
 
           </Card.Body>
-        </Card>
       </Col>
     </Row>
   ));
