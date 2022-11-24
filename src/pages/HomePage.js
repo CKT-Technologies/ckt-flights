@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/Header";
 // import TripForm from "../component/TripForm";
 import Map from "../component/Map";
@@ -7,12 +7,12 @@ import Map from "../component/Map";
 import "./HomePage.css";
 
 function HomePage() {
-  const [departCode, setDepartCode] = React.useState("MSP");
-  const [arriveCode, setArriveCode] = React.useState("ACY");
-  const [departDate, setDepartDate] = React.useState("");
-  const [returnDate, setReturnDate] = React.useState("");
-  const [passengers, setPassengers] = React.useState("1");
-  const [flightData, setFlightData] = React.useState([]);
+  const [departCode, setDepartCode] = useState("MSP");
+  const [arriveCode, setArriveCode] = useState("ACY");
+  const [departDate, setDepartDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [passengers, setPassengers] = useState("1");
+  const [flightData, setFlightData] = useState([]);
 
   return (
     <div className="homepage">
