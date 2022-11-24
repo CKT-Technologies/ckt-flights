@@ -1,0 +1,27 @@
+.formContainer {
+    min-width: 100%;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+}
+ 
+#form {
+    background-color: rgba(240, 255, 255, .9);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+    
+.btn-ckt {
+    color: #fff;
+    background-color: #003c3b99;
+    border-color: rgba(0, 60, 59, .6); /*set the color you want here*/
+}
+.btn-ckt:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #003c3b;
+    border-color: rgba(0, 60, 59); /*set the color you want here*/
+}
+
