@@ -34,14 +34,15 @@ function Test(flightData) {
   //   return <div>ytdf</div>;
   // }
 
-  return fakeResults.map((result) => (
+  return sampleResults.map((result) => (
     <Row className="result-card mx-auto">
       <Col className="result">
         <Card.Body>
           <Card.Title className="result-title">Desitnation Route <FontAwesomeIcon icon={faArrowRightToBracket} /></Card.Title>
           <Row>
-            <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.departCodeDestination}{" "}</Card.Text>
+            <Col> 
+                                                        {/* format looks right just need to loop through /> */}
+              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.flightOffer[0].Departure[0].arrivalCode}{" "}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.departDateDestination}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.departTimeDestination} </Card.Text>
             </Col>
