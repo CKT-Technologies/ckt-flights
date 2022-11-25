@@ -77,10 +77,10 @@ def api():
                 segment = s+1
                 departureCode = data[d]['itineraries'][i]['segments'][s]['departure']['iataCode']
                 departureDate = data[d]['itineraries'][i]['segments'][s]['departure']['at'].split('T')[0]
-                departureTime = data[d]['itineraries'][i]['segments'][s]['departure']['at'].split('T')[1]
+                departureTime = data[d]['itineraries'][i]['segments'][s]['departure']['at'].split('T')[1][:-3]
                 arrivalCode = data[d]['itineraries'][i]['segments'][s]['arrival']['iataCode']
                 arrivalDate = data[d]['itineraries'][i]['segments'][s]['arrival']['at'].split('T')[0]
-                arrivalTime = data[d]['itineraries'][i]['segments'][s]['arrival']['at'].split('T')[1]
+                arrivalTime = data[d]['itineraries'][i]['segments'][s]['arrival']['at'].split('T')[1][:-3]
                 carrierCode = data[d]['itineraries'][i]['segments'][s]['carrierCode']
                 sDuration = data[d]['itineraries'][i]['segments'][s]['duration']
 

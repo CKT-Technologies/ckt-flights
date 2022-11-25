@@ -33,8 +33,10 @@ function Results(flightData) {
     return <div>ytdf</div>;
   }
 
-
   return flightData.map((result) => (
+
+  // comment out the lines above and uncomment the line below to see the sample results
+
   // return sampleResults.map((result, index) => (
     <Row className="result-card mx-auto">
       <Col className="result">
