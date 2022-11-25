@@ -11,8 +11,6 @@ import {
   Container,
   Accordion
 } from "react-bootstrap";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -37,7 +35,7 @@ function Results(flightData) {
 
   // comment out the lines above and uncomment the line below to see the sample results
 
-  // return sampleResults.map((result, index) => (
+  // return sampleResults.map((result) => (
     <Row className="result-card mx-auto">
       <Col className="result">
         <Card.Body>
