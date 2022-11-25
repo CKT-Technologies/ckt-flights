@@ -92,6 +92,8 @@ function TripForm({
   };
 
   const handleOnSubmit = () => {
+    setFlightData([])
+
     console.log(departCode);
     console.log(arriveCode);
     console.log(departDate);

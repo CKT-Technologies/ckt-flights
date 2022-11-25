@@ -92,13 +92,13 @@ def api():
                                 'departureTime': departureTime, 
                                 'arrivalCode': arrivalCode, 
                                 'arrivalTime': arrivalTime, 
-                                'price': price, 
+
                                 'carrierCode': carrierCode, 
                                 'itinDuration': iDuration
                                 }
                 segment_list.append(segment_dict)
-            itinerary_list.append({f"{'Departure' if itinerary == 1 else 'Return'}": segment_list})
-        dict_list.append({f"flightOffer": itinerary_list})
+            itinerary_list.append({f"{'departureLegs' if itinerary == 1 else 'returnLegs'}": segment_list})
+        dict_list.append({f"direction": itinerary_list, 'price': price, })
 
     print(dict_list)
     return jsonify(dict_list)
