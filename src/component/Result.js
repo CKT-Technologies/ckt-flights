@@ -1,28 +1,9 @@
 import React from "react";
 import "./Result.css";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import fakeResults from "../data/fakeResults.json";
 import sampleResults from "../data/sampleResults.json";
-import Map from "./Map";
-import {
-  Button,
-  Container,
-  Accordion
-} from "react-bootstrap";
-
+import { Button, Card, Row, Col, Container, Accordion } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRightToBracket,
-  faArrowRightFromBracket,
-  faPlaneDeparture,
-  faPlaneArrival,
-  faCalendar,
-  faClock,
-  faMoneyBill1,
-  faDollarSign,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightToBracket, faArrowRightFromBracket, faPlaneDeparture, faPlaneArrival, faCalendar, faClock, faMoneyBill1, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 function Results(flightData) {
   flightData = flightData.flightData.flightData;
