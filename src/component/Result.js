@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Result.css";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -7,11 +7,9 @@ import fakeResults from "../data/fakeResults.json";
 import sampleResults from "../data/sampleResults.json";
 import Map from "./Map";
 import {
-  Modal,
   Button,
   Container,
-  Accordion,
-  ScrollView,
+  Accordion
 } from "react-bootstrap";
 import axios from "axios";
 
@@ -28,28 +26,30 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Test(flightData) {
-  flightData = flightData.flightData.flightData;
-  console.log(flightData.length);
+  // flightData = flightData.flightData.flightData;
+  // console.log(flightData.length);
   // if (flightData.len === 0) {
   //   return <div>ytdf</div>;
   // }
 
-  return sampleResults.map((result) => (
+  sampleResults.map((result, index) => console.log(index +"D = " + result.flightOffer[0].Departure[0].departureCode));
+  sampleResults.map((result, index) => console.log(index +"A = " + result.flightOffer[0].Departure[2].arrivalCode));
+
+  return sampleResults.map((result, index) => (
     <Row className="result-card mx-auto">
       <Col className="result">
         <Card.Body>
           <Card.Title className="result-title">Desitnation Route <FontAwesomeIcon icon={faArrowRightToBracket} /></Card.Title>
           <Row>
             <Col> 
-                                                        {/* format looks right just need to loop through /> */}
-              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.flightOffer[0].Departure[0].arrivalCode}{" "}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.departDateDestination}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.departTimeDestination} </Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.flightOffer[0].Departure[0].departureCode}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.flightOffer[0].Departure[0].departureTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.flightOffer[0].Departure[0].departureTime} </Card.Text>
             </Col>
             <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.arriveCodeDestination}{" "}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.arriveDateDestination}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.arriveTimeDestination}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.flightOffer[0].Departure[sampleResults.length-1].arrivalCode}{" "}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.flightOffer[0].Departure[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.flightOffer[0].Departure[sampleResults.length-1].arrivalTime}</Card.Text>
             </Col>
           </Row>
         </Card.Body>
@@ -58,15 +58,15 @@ function Test(flightData) {
         <Card.Body>
           <Card.Title className="result-title"><FontAwesomeIcon icon={faArrowRightFromBracket} /> Return Route</Card.Title>
           <Row>
-            <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.departCodeReturn}{" "}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} /> {result.departDateReturn}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} /> {result.departTimeReturn}</Card.Text>
+            <Col> 
+              <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.flightOffer[1].Return[0].departureCode}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.flightOffer[1].Return[0].departureTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.flightOffer[1].Return[0].departureTime} </Card.Text>
             </Col>
             <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.arriveCodeReturn}{" "}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} /> {result.arriveDateReturn}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} /> {result.arriveTimeReturn}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.flightOffer[1].Return[sampleResults.length-1].arrivalCode}{" "}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.flightOffer[1].Return[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.flightOffer[1].Return[sampleResults.length-1].arrivalTime}</Card.Text>
             </Col>
           </Row>
         </Card.Body>

@@ -7,7 +7,7 @@
               "arrivalCode": "ATL",
               "arrivalTime": "2022-11-25T16:47:00",
               "carrierCode": "NK",
-              "departureCode": "MSP",
+              "departureCode": "MSP1",
               "departureTime": "2022-11-25T13:15:00",
               "id": "1",
               "itinDuration": "PT19H14M",
@@ -32,7 +32,7 @@
               "segments": 3
             },
             {
-              "arrivalCode": "ACY",
+              "arrivalCode": "ACY1",
               "arrivalTime": "2022-11-26T09:29:00",
               "carrierCode": "NK",
               "departureCode": "FLL",
@@ -103,7 +103,7 @@
               "arrivalCode": "ATL",
               "arrivalTime": "2022-11-25T16:47:00",
               "carrierCode": "NK",
-              "departureCode": "MSP",
+              "departureCode": "MSP2",
               "departureTime": "2022-11-25T13:15:00",
               "id": "2",
               "itinDuration": "PT19H14M",
@@ -128,7 +128,7 @@
               "segments": 3
             },
             {
-              "arrivalCode": "ACY",
+              "arrivalCode": "ACY2",
               "arrivalTime": "2022-11-26T09:29:00",
               "carrierCode": "NK",
               "departureCode": "FLL",
@@ -196,10 +196,10 @@
         {
           "Departure": [
             {
-              "arrivalCode": "ATL",
+              "arrivalCode": "AMS",
               "arrivalTime": "2022-11-25T16:47:00",
               "carrierCode": "NK",
-              "departureCode": "MSP",
+              "departureCode": "MSP3",
               "departureTime": "2022-11-25T13:15:00",
               "id": "3",
               "itinDuration": "PT19H14M",
@@ -224,7 +224,7 @@
               "segments": 3
             },
             {
-              "arrivalCode": "ACY",
+              "arrivalCode": "ACY3",
               "arrivalTime": "2022-11-26T09:29:00",
               "carrierCode": "NK",
               "departureCode": "FLL",
