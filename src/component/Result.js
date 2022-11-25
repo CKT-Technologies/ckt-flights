@@ -11,7 +11,8 @@ import {
   Container,
   Accordion
 } from "react-bootstrap";
-import axios from "axios";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,7 +26,7 @@ import {
   faDollarSign,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Test(flightData) {
+function Results(flightData) {
   flightData = flightData.flightData.flightData;
   console.log(flightData.length);
   if (flightData.len === 0) {
@@ -33,7 +34,7 @@ function Test(flightData) {
   }
 
 
-  return flightData.map((result, index) => (
+  return flightData.map((result) => (
   // return sampleResults.map((result, index) => (
     <Row className="result-card mx-auto">
       <Col className="result">
@@ -42,12 +43,12 @@ function Test(flightData) {
           <Row>
             <Col> 
               <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.direction[0].departureLegs[0].departureCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[0].departureTime}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[0].departureTime} </Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[0].departureDate}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[0].departureTime}</Card.Text>
             </Col>
             <Col>
               <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalDate}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalTime}</Card.Text>
             </Col>
           </Row>
@@ -59,12 +60,12 @@ function Test(flightData) {
           <Row>
             <Col> 
               <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.direction[1].returnLegs[0].departureCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs[0].departureTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs[0].departureDate}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[1].returnLegs[0].departureTime} </Card.Text>
             </Col>
             <Col>
               <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalDate}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalTime}</Card.Text>
             </Col>
           </Row>
@@ -84,7 +85,7 @@ function Test(flightData) {
 function Result(flightData) {
   return (
     <Container fluid className="result-container">
-      <Test flightData={flightData}/>
+      <Results flightData={flightData}/>
     </Container>
   );
 }

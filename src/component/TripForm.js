@@ -85,14 +85,14 @@ function TripForm({
   };
 
   const formatDate = (date) => {
-    const day = date["$D"];
+    const day = '0' + date["$D"];
     const month = date["$M"] + 1;
     const year = date["$y"];
-    return `${year}-${month}-${day}`;
+    return `${year}-${month}-${day.slice(-2)}`;
   };
 
   const handleOnSubmit = () => {
-    setFlightData([])
+    setFlightData([]);
 
     console.log(departCode);
     console.log(arriveCode);
