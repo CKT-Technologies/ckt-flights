@@ -17,15 +17,15 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     setClickedCard("");
   };
   
-  // if (flightData.len === 0) {
-  //   return null;
-  // }
+  if (flightData.len === 0) {
+    return null;
+  }
 
-  // return flightData.map((result) => (
+  return flightData.map((result) => (
 
   // comment out the lines above and uncomment the line below to see the sample results
 
-  return sampleResults.map((result) => (
+  // return sampleResults.map((result) => (
     <>
     <Row className={clickedCard !== result.id ? "result-card mx-auto" : "result-card-clicked mx-auto"}>
       <Col className="result">
@@ -68,7 +68,7 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     {clickedCard === result.id ? (
     <Row className="result-details-card mx-auto">
       <Col className="result-details">
-          <Card.Title className="result-title">Desitnation Route</Card.Title>
+          <Card.Title className="result-title">Destination Route</Card.Title>
             <Row>
               <Col><FontAwesomeIcon icon={faCalendar} /></Col>
               <Col><FontAwesomeIcon icon={faPlaneDeparture} /></Col>
