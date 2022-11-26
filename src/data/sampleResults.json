@@ -4,7 +4,7 @@
         {
           "departureLegs": [
             {
-              "arrivalCode": "DTW",
+              "arrivalCode": "YYZ",
               "arrivalDate": "2022-11-25",
               "arrivalTime": "21:27",
               "carrierCode": "NK",
@@ -18,11 +18,11 @@
               "segments": 3
             },
             {
-              "arrivalCode": "RSW",
+              "arrivalCode": "AMS",
               "arrivalDate": "2022-11-26",
               "arrivalTime": "08:31",
               "carrierCode": "NK",
-              "departureCode": "DTW",
+              "departureCode": "YYZ",
               "departureDate": "2022-11-26",
               "departureTime": "05:40",
               "itinDuration": "PT16H19M",
@@ -32,11 +32,11 @@
               "segments": 3
             },
             {
-              "arrivalCode": "ACY",
+              "arrivalCode": "PRG",
               "arrivalDate": "2022-11-26",
               "arrivalTime": "12:04",
               "carrierCode": "NK",
-              "departureCode": "RSW",
+              "departureCode": "AMS",
               "departureDate": "2022-11-26",
               "departureTime": "09:40",
               "itinDuration": "PT16H19M",
@@ -50,11 +50,11 @@
         {
           "returnLegs": [
             {
-              "arrivalCode": "MCO",
+              "arrivalCode": "AMS",
               "arrivalDate": "2022-11-26",
               "arrivalTime": "22:08",
               "carrierCode": "NK",
-              "departureCode": "ACY",
+              "departureCode": "PRG",
               "departureDate": "2022-11-26",
               "departureTime": "19:35",
               "itinDuration": "PT41H38M",
@@ -64,11 +64,11 @@
               "segments": 3
             },
             {
-              "arrivalCode": "ATL",
+              "arrivalCode": "JFK",
               "arrivalDate": "2022-11-27",
               "arrivalTime": "22:31",
               "carrierCode": "NK",
-              "departureCode": "MCO",
+              "departureCode": "AMS",
               "departureDate": "2022-11-27",
               "departureTime": "20:51",
               "itinDuration": "PT41H38M",
@@ -82,7 +82,7 @@
               "arrivalDate": "2022-11-28",
               "arrivalTime": "12:13",
               "carrierCode": "NK",
-              "departureCode": "ATL",
+              "departureCode": "JFK",
               "departureDate": "2022-11-28",
               "departureTime": "10:30",
               "itinDuration": "PT41H38M",
