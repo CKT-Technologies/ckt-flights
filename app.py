@@ -71,7 +71,6 @@ def api():
     
     dict_list = []
     for d in range(len(data)):
-        flight = d+1
         id = data[d]['id']
         price = data[d]['price']['total']
         itinerary_list = []

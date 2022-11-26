@@ -33,7 +33,6 @@ function TripForm({
   setClickedCard
 }) {
   const [alignment, setAlignment] = React.useState("round-trip");
-  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleOnSearch = (string, results) => {
     // onSearch will have the first callback parameter as
@@ -104,7 +103,6 @@ function TripForm({
     setFlightData([]);
     setStopCodes({"departCodes": [], "returnCodes": []});
     setClickedCard("");
-    // setIsLoading(true);
     
     console.log(departCode);
     console.log(arriveCode);
@@ -129,7 +127,6 @@ function TripForm({
         console.log(err);
       });
       
-      // setIsLoading(false);
     };
     
   const formatResult = (item) => {

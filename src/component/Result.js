@@ -36,15 +36,15 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
     
   };
 
-  // if (flightData.len === 0) {
-  //   return null;
-  // }
+  if (flightData.len === 0) {
+    return null;
+  }
 
-  // return flightData.map((result) => (
+  return flightData.map((result) => (
 
   // comment out the lines above and uncomment the line below to see the sample results
 
-  return sampleResults.map((result) => (
+  // return sampleResults.map((result) => (
     <>
     <Row className={clickedCard !== result.id ? "result-card mx-auto" : "result-card-clicked mx-auto"}>
       <Col className="result">
