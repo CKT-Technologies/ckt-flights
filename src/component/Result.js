@@ -68,7 +68,7 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     {clickedCard === result.id ? (
     <Row className="result-details-card mx-auto">
       <Col className="result-details">
-          <Card.Title className="result-title">Desitnation Route <FontAwesomeIcon icon={faArrowRightToBracket} /></Card.Title>
+          <Card.Title className="result-title">Desitnation Route</Card.Title>
             <Row>
               <Col><FontAwesomeIcon icon={faCalendar} /></Col>
               <Col><FontAwesomeIcon icon={faPlaneDeparture} /></Col>
@@ -76,6 +76,21 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
               <Col><FontAwesomeIcon icon={faCalendar} /></Col>
             </Row>
             {result.direction[0].departureLegs.map((leg) => (
+            <Row>
+              <Col>{leg.departureDate}{" "}{leg.departureTime}</Col>
+              <Col>{leg.departureCode}</Col>
+              <Col>{leg.arrivalCode}</Col>
+              <Col>{leg.arrivalDate}{" "}{leg.arrivalTime}</Col>
+            </Row>
+            ))}
+          <Card.Title className="result-title">Return Route</Card.Title>
+            <Row>
+              <Col><FontAwesomeIcon icon={faCalendar} /></Col>
+              <Col><FontAwesomeIcon icon={faPlaneDeparture} /></Col>
+              <Col><FontAwesomeIcon icon={faPlaneArrival} /></Col>
+              <Col><FontAwesomeIcon icon={faCalendar} /></Col>
+            </Row>
+            {result.direction[1].returnLegs.map((leg) => (
             <Row>
               <Col>{leg.departureDate}{" "}{leg.departureTime}</Col>
               <Col>{leg.departureCode}</Col>
