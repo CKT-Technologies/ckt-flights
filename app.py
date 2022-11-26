@@ -20,8 +20,6 @@ flight_url = "https://test.api.amadeus.com/v2/shopping/flight-offers"
 def get_token():
     token_respone = requests.post(
         token_url, data=token_payload, headers=token_headers).json()
-    print(token_respone)
-    print("\n")
     ACCESS_TOKEN = token_respone['access_token']
     return ACCESS_TOKEN
 
@@ -41,8 +39,6 @@ def api():
     ACCESS_TOKEN = get_token()
     postData = json.loads(request.data)
     
-    print(postData)
-    print("\n")
     
     departCode = postData['departCode']
     arriveCode = postData['arriveCode']
@@ -62,12 +58,8 @@ def api():
     headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
     response = requests.get(flight_url, headers=headers,
                             params=params).json()
-    print(response)
-    print("\n")
     
     data = response['data']
-    print(data)
-    print("\n")
     
     dict_list = []
     for d in range(len(data)):
@@ -108,8 +100,6 @@ def api():
             itinerary_list.append({f"{'departureLegs' if itinerary == 1 else 'returnLegs'}": segment_list})
         dict_list.append({f'id': id, 'price': price, "direction": itinerary_list })
 
-    print(dict_list)
-    print("\n")
     return jsonify(dict_list)
 
 if __name__ == '__main__':

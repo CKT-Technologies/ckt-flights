@@ -7,8 +7,6 @@ import { faArrowRightToBracket, faArrowRightFromBracket, faPlaneDeparture, faPla
 
 function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowMap, stopCodes, setStopCodes}) {
   const handleShowDetails = (e) => {
-    console.log("show details for card " + e.target.value);
-    console.log(clickedCard);
     setClickedCard(e.target.value);
     clickedCard === e.target.value ? setClickedCard("") : setClickedCard(e.target.value); 
   };
@@ -36,7 +34,7 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
     
   };
 
-  if (flightData.len === 0) {
+  if (flightData.length === 0) {
     return null;
   }
 
