@@ -42,13 +42,15 @@ function Map({
   passengers,
   flightData,
   clickedCard,
+  showMap,
   setDepartCode,
   setArriveCode,
   setDepartDate,
   setReturnDate,
   setPassengers,
   setFlightData,
-  setClickedCard
+  setClickedCard, 
+  setShowMap
 }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyARgEWVzXfMVGVtrXFmZHJwdL5yqxYFL_k",
@@ -112,17 +114,21 @@ function Map({
           returnDate={returnDate}
           passengers={passengers}
           flightData={flightData}
+          showMap={showMap}
           setDepartCode={setDepartCode}
           setArriveCode={setArriveCode}
           setDepartDate={setDepartDate}
           setReturnDate={setReturnDate}
           setPassengers={setPassengers}
           setFlightData={setFlightData}
+          setShowMap={setShowMap}
         />
-        <Result 
+        <Result
           flightData={flightData} 
           clickedCard={clickedCard} 
-          setClickedCard={setClickedCard} 
+          showMap={showMap}
+          setClickedCard={setClickedCard}
+          setShowMap={setShowMap} 
         />
 
       </GoogleMap>

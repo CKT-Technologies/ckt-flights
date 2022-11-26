@@ -21,12 +21,14 @@ function TripForm({
   returnDate,
   passengers,
   flightData,
+  showMap,
   setDepartCode,
   setArriveCode,
   setDepartDate,
   setReturnDate,
   setPassengers,
-  setFlightData
+  setFlightData,
+  setShowMap
 }) {
   const [alignment, setAlignment] = React.useState("round-trip");
 
@@ -135,7 +137,7 @@ function TripForm({
   };
 
   return (
-    <div className="container formContainer">
+    <div className={showMap ? "container formContainer hide" : "container formContainer"}>
       <div className="col-10 offset-1">
         <div className="container-fluid border rounded" id="form">
           <div className="row pt-3 px-3">

@@ -5,7 +5,7 @@ import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faArrowRightFromBracket, faPlaneDeparture, faPlaneArrival, faCalendar, faClock, faMoneyBill1, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
-function ResultCards({flightData, clickedCard, setClickedCard, shoowMap, setShowMap}) {
+function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowMap}) {
   const handleShowDetails = (e) => {
     console.log("show details for card " + e.target.value);
     console.log(clickedCard);
@@ -13,7 +13,7 @@ function ResultCards({flightData, clickedCard, setClickedCard, shoowMap, setShow
     clickedCard === e.target.value ? setClickedCard("") : setClickedCard(e.target.value); 
   };
 
-  const handleShowHide = (e) => {
+  const handleShowHide = () => {
     setShowMap(true);
     setTimeout(() => {
       setShowMap(false);
@@ -21,15 +21,15 @@ function ResultCards({flightData, clickedCard, setClickedCard, shoowMap, setShow
     
   };
 
-  if (flightData.len === 0) {
-    return null;
-  }
+  // if (flightData.len === 0) {
+  //   return null;
+  // }
 
-  return flightData.map((result) => (
+  // return flightData.map((result) => (
 
   // comment out the lines above and uncomment the line below to see the sample results
 
-  // return sampleResults.map((result) => (
+  return sampleResults.map((result) => (
     <>
     <Row className={clickedCard !== result.id ? "result-card mx-auto" : "result-card-clicked mx-auto"}>
       <Col className="result">
@@ -112,8 +112,7 @@ function ResultCards({flightData, clickedCard, setClickedCard, shoowMap, setShow
   ));
 }
 
-function Result({flightData, clickedCard, setClickedCard}) {
-  const [showMap, setShowMap] = React.useState(false);
+function Result({flightData, clickedCard, setClickedCard, showMap, setShowMap}) {
   return (
     <Container fluid className={showMap ? "result-container hide" : "result-container"}>
       <ResultCards showMap={showMap} setShowMap={setShowMap} flightData={flightData} clickedCard={clickedCard} setClickedCard={setClickedCard} />

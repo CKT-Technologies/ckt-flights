@@ -12,6 +12,7 @@ function HomePage() {
   const [passengers, setPassengers] = React.useState("1");
   const [flightData, setFlightData] = React.useState([]);
   const [clickedCard, setClickedCard] = React.useState("");
+  const [showMap, setShowMap] = React.useState(false);
 
   return (
     <div className="homepage">
@@ -23,13 +24,16 @@ function HomePage() {
         passengers={passengers}
         flightData={flightData}
         clickedCard={clickedCard}
+        showMap={showMap}
         setDepartCode={setDepartCode}
         setArriveCode={setArriveCode}
         setDepartDate={setDepartDate}
         setReturnDate={setReturnDate}
         setPassengers={setPassengers}
         setFlightData={setFlightData}
-        setClickedCard={setClickedCard}/>
+        setClickedCard={setClickedCard}
+        setShowMap={setShowMap}
+        />
     </div>
   );
 }
