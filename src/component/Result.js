@@ -22,7 +22,7 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
   flightData = flightData.flightData.flightData;
   console.log(flightData.length);
   if (flightData.len === 0) {
-    return <div>ytdf</div>;
+    return <div></div>;
   }
 
   return flightData.map((result) => (
