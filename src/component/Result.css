@@ -10,11 +10,21 @@
 
 .result-card {
   width: 80%;
-  height: 20vh;
+  height: auto;
   margin-top: 15px;
 }
 
 .result-card:hover{
+  transform: scale(1.05);
+  transition: .3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.36);
+  background-color: rgba(0, 60, 59, .8);
+}
+
+.result-card-clicked {
+  width: 80%;
+  height: auto;
+  margin-top: 15px;
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.36);
   background-color: rgba(0, 60, 59, .8);
@@ -34,4 +44,22 @@
   font-weight: 600;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+.result-details-card {
+  width: 80%;
+  height: auto;
+  transform: scale(1.05);
+  transition: .3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.36);
+  margin-top: 10px;
+}
+
+.result-details {
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 2rem;
+  color: azure;
+  background-color: rgba(60, 49, 0, 0.6);
 }
