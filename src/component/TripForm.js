@@ -28,9 +28,12 @@ function TripForm({
   setReturnDate,
   setPassengers,
   setFlightData,
-  setShowMap
+  setShowMap,
+  setStopCodes,
+  setClickedCard
 }) {
   const [alignment, setAlignment] = React.useState("round-trip");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleOnSearch = (string, results) => {
     // onSearch will have the first callback parameter as
@@ -48,13 +51,17 @@ function TripForm({
   const handleOnSelectDepart = (item) => {
     // the item selected
     setDepartCode(item.code);
+    setFlightData([]);
+    setStopCodes({"departCodes": [], "returnCodes": []});
     // console.log(item.code);
     // return item;
   };
-
+  
   const handleOnSelectArrive = (item) => {
     // the item selected
     setArriveCode(item.code);
+    setFlightData([]);
+    setStopCodes({"departCodes": [], "returnCodes": []});
     // console.log(item.code);
     // return item;
   };
@@ -95,22 +102,25 @@ function TripForm({
 
   const handleOnSubmit = () => {
     setFlightData([]);
-
+    setStopCodes({"departCodes": [], "returnCodes": []});
+    setClickedCard("");
+    // setIsLoading(true);
+    
     console.log(departCode);
     console.log(arriveCode);
     console.log(departDate);
     console.log(returnDate);
     console.log(passengers);
-
+    
     
     axios.post("/api", 
-      {
-        "departCode": departCode,
-        "arriveCode": arriveCode,
-        "departDate": departDate,
-        "returnDate": returnDate,
-        "passengers": passengers
-      })
+    {
+      "departCode": departCode,
+      "arriveCode": arriveCode,
+      "departDate": departDate,
+      "returnDate": returnDate,
+      "passengers": passengers
+    })
       .then((res) => {
         console.log(res.data);
         setFlightData(res.data);
@@ -118,9 +128,10 @@ function TripForm({
       .catch((err) => {
         console.log(err);
       });
-
+      
+      // setIsLoading(false);
     };
-
+    
   const formatResult = (item) => {
     return (
       <>
@@ -130,12 +141,11 @@ function TripForm({
       </>
     );
   };
-
+  
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
     console.log(alignment);
   };
-
   return (
     <div className={showMap ? "container formContainer hide" : "container formContainer"}>
       <div className="col-10 offset-1">
@@ -157,6 +167,7 @@ function TripForm({
                 variant="outlined"
                 color="success"
               >
+              {/* <span className={isLoading ? "loader" : null}></span> */}
                 Round-trip
                 <SyncAltIcon />
               </ToggleButton>

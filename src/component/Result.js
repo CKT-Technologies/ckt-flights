@@ -1,11 +1,11 @@
 import React from "react";
 import "./Result.css";
-import sampleResults from "../data/sampleResults.json";
+// import sampleResults from "../data/sampleResults.json";
 import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faArrowRightFromBracket, faPlaneDeparture, faPlaneArrival, faCalendar, faClock, faMoneyBill1, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
-function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowMap}) {
+function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowMap, stopCodes, setStopCodes}) {
   const handleShowDetails = (e) => {
     console.log("show details for card " + e.target.value);
     console.log(clickedCard);
@@ -13,11 +13,26 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
     clickedCard === e.target.value ? setClickedCard("") : setClickedCard(e.target.value); 
   };
 
-  const handleShowHide = () => {
+  const handleShowHide = (result) => {
+    const departCodes = [];
+    const returnCodes = [];
+
+    { result.direction[0].departureLegs.map((leg) => (
+      departCodes.push(leg.departureCode),
+      departCodes.push(leg.arrivalCode)))
+    }
+    
+    {result.direction[1].returnLegs.map((leg) => (
+      returnCodes.push(leg.departureCode),
+      returnCodes.push(leg.arrivalCode)))
+    }
+    
+    setStopCodes({"departCodes": departCodes, "returnCodes": returnCodes});
+
     setShowMap(true);
     setTimeout(() => {
       setShowMap(false);
-    }, 5000);
+    }, 3000);
     
   };
 
@@ -41,9 +56,9 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[0].departureTime}</Card.Text>
             </Col>
             <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalDate}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[0].departureLegs.at(-1).arrivalCode}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs.at(-1).arrivalDate}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs.at(-1).arrivalTime}</Card.Text>
             </Col>
           </Row>
       </Col>
@@ -56,9 +71,9 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[1].returnLegs[0].departureTime} </Card.Text>
             </Col>
             <Col>
-              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalCode}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalDate}</Card.Text>
-              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[1].returnLegs[sampleResults.length-1].arrivalTime}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[1].returnLegs.at(-1).arrivalCode}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[1].returnLegs.at(-1).arrivalDate}</Card.Text>
+              <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[1].returnLegs.at(-1).arrivalTime}</Card.Text>
             </Col>
           </Row>
       </Col>
@@ -103,7 +118,7 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
             </Row>
             ))}
           <Row className="map-button">
-            <Button className="btn-ckt" value={result.id} onMouseDown={handleShowHide}>Show Map</Button>
+            <Button className="btn-ckt" onClick={() => handleShowHide(result)}>Show Map</Button>
           </Row>
       </Col>
     </Row>
@@ -112,10 +127,26 @@ function ResultCards({flightData, clickedCard, setClickedCard, showMap, setShowM
   ));
 }
 
-function Result({flightData, clickedCard, setClickedCard, showMap, setShowMap}) {
+function Result({
+  flightData, 
+  clickedCard, 
+  showMap,
+  stopCodes, 
+  setClickedCard, 
+  setShowMap,
+  setStopCodes
+}) {
   return (
     <Container fluid className={showMap ? "result-container hide" : "result-container"}>
-      <ResultCards showMap={showMap} setShowMap={setShowMap} flightData={flightData} clickedCard={clickedCard} setClickedCard={setClickedCard} />
+      <ResultCards 
+        flightData={flightData} 
+        showMap={showMap} 
+        clickedCard={clickedCard}
+        stopCodes={stopCodes} 
+        setShowMap={setShowMap} 
+        setClickedCard={setClickedCard} 
+        setStopCodes={setStopCodes}
+      />
     </Container>
   );
 }

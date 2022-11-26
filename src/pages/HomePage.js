@@ -6,13 +6,14 @@ import "./HomePage.css";
 
 function HomePage() {
   const [departCode, setDepartCode] = React.useState("MSP");
-  const [arriveCode, setArriveCode] = React.useState("ACY");
+  const [arriveCode, setArriveCode] = React.useState("MSP");
   const [departDate, setDepartDate] = React.useState("");
   const [returnDate, setReturnDate] = React.useState("");
   const [passengers, setPassengers] = React.useState("1");
   const [flightData, setFlightData] = React.useState([]);
   const [clickedCard, setClickedCard] = React.useState("");
   const [showMap, setShowMap] = React.useState(false);
+  const [stopCodes, setStopCodes] = React.useState({"departCodes": [], "returnCodes": []});
 
   return (
     <div className="homepage">
@@ -25,6 +26,7 @@ function HomePage() {
         flightData={flightData}
         clickedCard={clickedCard}
         showMap={showMap}
+        stopCodes={stopCodes}
         setDepartCode={setDepartCode}
         setArriveCode={setArriveCode}
         setDepartDate={setDepartDate}
@@ -33,6 +35,7 @@ function HomePage() {
         setFlightData={setFlightData}
         setClickedCard={setClickedCard}
         setShowMap={setShowMap}
+        setStopCodes={setStopCodes}
         />
     </div>
   );
