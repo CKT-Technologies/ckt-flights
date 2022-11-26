@@ -5,13 +5,20 @@ import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faArrowRightFromBracket, faPlaneDeparture, faPlaneArrival, faCalendar, faClock, faMoneyBill1, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
-function ResultCards({flightData, clickedCard, setClickedCard}) {
+function ResultCards({flightData, clickedCard, setClickedCard, shoowMap, setShowMap}) {
   const handleShowDetails = (e) => {
     console.log("show details for card " + e.target.value);
     console.log(clickedCard);
     setClickedCard(e.target.value);
     clickedCard === e.target.value ? setClickedCard("") : setClickedCard(e.target.value); 
+  };
 
+  const handleShowHide = (e) => {
+    setShowMap(true);
+    setTimeout(() => {
+      setShowMap(false);
+    }, 5000);
+    
   };
 
   if (flightData.len === 0) {
@@ -95,6 +102,9 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
               <Col>{leg.arrivalDate}{" "}{leg.arrivalTime}</Col>
             </Row>
             ))}
+          <Row className="map-button">
+            <Button className="btn-ckt" value={result.id} onMouseDown={handleShowHide}>Show Map</Button>
+          </Row>
       </Col>
     </Row>
     ) : null}
@@ -103,9 +113,10 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
 }
 
 function Result({flightData, clickedCard, setClickedCard}) {
+  const [showMap, setShowMap] = React.useState(false);
   return (
-    <Container fluid className="result-container">
-      <ResultCards flightData={flightData} clickedCard={clickedCard} setClickedCard={setClickedCard} />
+    <Container fluid className={showMap ? "result-container hide" : "result-container"}>
+      <ResultCards showMap={showMap} setShowMap={setShowMap} flightData={flightData} clickedCard={clickedCard} setClickedCard={setClickedCard} />
     </Container>
   );
 }
