@@ -10,13 +10,10 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     console.log("show details for card " + e.target.value);
     console.log(clickedCard);
     setClickedCard(e.target.value);
+    clickedCard === e.target.value ? setClickedCard("") : setClickedCard(e.target.value); 
+
   };
 
-  const handleHideDetails = (e) => {
-    console.log("hide details");
-    setClickedCard("");
-  };
-  
   if (flightData.len === 0) {
     return null;
   }
@@ -61,7 +58,7 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
       <Col md={2} className="result">
           <Card.Title><FontAwesomeIcon icon={faMoneyBill1} /> Price</Card.Title>
           <Card.Text><FontAwesomeIcon icon={faDollarSign} /> {result.price}</Card.Text>
-          <Button className="btn-ckt"  value={result.id} onClick={handleShowDetails}>Show Details</Button>
+          <Button className="btn-ckt"  value={result.id} onClick={handleShowDetails}>{clickedCard !== result.id ? "Details" : "Hide"}</Button>
       </Col>
     </Row>
     {/* THIS THIS THE START OF THE DETAILS CARD */}
@@ -98,10 +95,6 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
               <Col>{leg.arrivalDate}{" "}{leg.arrivalTime}</Col>
             </Row>
             ))}
-      </Col>
-
-      <Col md={2} className="result-details">
-          <Button className="btn-ckt"onClick={handleHideDetails} >Hide Details</Button>
       </Col>
     </Row>
     ) : null}
