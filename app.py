@@ -17,7 +17,6 @@ token_payload = f"grant_type=client_credentials&client_id={CLIENT_ID}&client_sec
 token_headers = {"Content-Type": "application/x-www-form-urlencoded"}
 flight_url = "https://test.api.amadeus.com/v2/shopping/flight-offers"
 
-
 def get_token():
     token_respone = requests.post(
         token_url, data=token_payload, headers=token_headers).json()
