@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "../component/Header";
-import TripForm from "../component/TripForm";
 import Map from "../component/Map";
-import Result from "../component/Result";
 
 import "./HomePage.css";
 
@@ -13,6 +11,7 @@ function HomePage() {
   const [returnDate, setReturnDate] = React.useState("");
   const [passengers, setPassengers] = React.useState("1");
   const [flightData, setFlightData] = React.useState([]);
+  const [clickedCard, setClickedCard] = React.useState("");
 
   return (
     <div className="homepage">
@@ -23,12 +22,14 @@ function HomePage() {
         returnDate={returnDate}
         passengers={passengers}
         flightData={flightData}
+        clickedCard={clickedCard}
         setDepartCode={setDepartCode}
         setArriveCode={setArriveCode}
         setDepartDate={setDepartDate}
         setReturnDate={setReturnDate}
         setPassengers={setPassengers}
-        setFlightData={setFlightData}/>
+        setFlightData={setFlightData}
+        setClickedCard={setClickedCard}/>
     </div>
   );
 }
