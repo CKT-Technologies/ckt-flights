@@ -4,7 +4,6 @@ import {
   useLoadScript,
   MarkerF,
   PolylineF,
-  PolygonF,
 } from "@react-google-maps/api";
 import mapStyles from "./mapStyles.json";
 import { blue, red, green, orange } from "@mui/material/colors";

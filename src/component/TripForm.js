@@ -33,18 +33,15 @@ function TripForm({
   setClickedCard
 }) {
   const [alignment, setAlignment] = React.useState("round-trip");
-  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleOnSearch = (string, results) => {
     // onSearch will have the first callback parameter as
     // the string searched. For the second, the results.
-    // console.log(string, results);
     // return string, results;
   };
 
   const handleOnHover = (result) => {
     // the item hovered
-    // console.log(result);
     return result;
   };
 
@@ -53,7 +50,6 @@ function TripForm({
     setDepartCode(item.code);
     setFlightData([]);
     setStopCodes({"departCodes": [], "returnCodes": []});
-    // console.log(item.code);
     // return item;
   };
   
@@ -62,13 +58,11 @@ function TripForm({
     setArriveCode(item.code);
     setFlightData([]);
     setStopCodes({"departCodes": [], "returnCodes": []});
-    // console.log(item.code);
     // return item;
   };
 
   const handleOnSelectPassengers = (item) => {
     // the item selected
-    console.log(item.target.value);
     setPassengers(item.target.value);
     // return item;
   };
@@ -77,7 +71,6 @@ function TripForm({
     // the item selected
     item = formatDate(item)
     setDepartDate(item);
-    console.log(item);
     // return item;
   };
   const
@@ -85,12 +78,10 @@ function TripForm({
     // the item selected
     item = formatDate(item)
     setReturnDate(item);
-    console.log(item);
     // return item;
   };
 
   const handleOnFocus = () => {
-    // console.log("Focused");
   };
 
   const formatDate = (date) => {
@@ -104,13 +95,7 @@ function TripForm({
     setFlightData([]);
     setStopCodes({"departCodes": [], "returnCodes": []});
     setClickedCard("");
-    // setIsLoading(true);
     
-    console.log(departCode);
-    console.log(arriveCode);
-    console.log(departDate);
-    console.log(returnDate);
-    console.log(passengers);
     
     
     axios.post("/api", 
@@ -122,14 +107,11 @@ function TripForm({
       "passengers": passengers
     })
       .then((res) => {
-        console.log(res.data);
         setFlightData(res.data);
       })
       .catch((err) => {
-        console.log(err);
       });
       
-      // setIsLoading(false);
     };
     
   const formatResult = (item) => {
@@ -144,7 +126,6 @@ function TripForm({
   
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
-    console.log(alignment);
   };
   return (
     <div className={showMap ? "container formContainer hide" : "container formContainer"}>
