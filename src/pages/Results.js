@@ -6,10 +6,11 @@ import "./Results.css";
 
 
 function Results() {
+  const [clickedCard, setClickedCard] = React.useState("1");
   return (
     <div className="results">
       <Header />
-      <Result />
+      <Result clickedCard={clickedCard} setClickedCard={setClickedCard}/>
     </div>
   );
 }

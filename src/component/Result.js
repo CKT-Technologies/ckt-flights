@@ -10,7 +10,6 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     console.log("show details for card " + e.target.value);
     console.log(clickedCard);
     setClickedCard(e.target.value);
-
   };
 
   const handleHideDetails = (e) => {
@@ -28,7 +27,7 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
 
   // return sampleResults.map((result) => (
     <>
-    <Row className="result-card mx-auto">
+    <Row className={clickedCard !== result.id ? "result-card mx-auto" : "result-card-clicked mx-auto"}>
       <Col className="result">
         <Card.Body>
           <Card.Title className="result-title">Desitnation Route <FontAwesomeIcon icon={faArrowRightToBracket} /></Card.Title>
@@ -71,23 +70,22 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
         </Card.Body>
       </Col>
     </Row>
-
+    {/* THIS THIS THE START OF THE DETAILS CARD */}
     {clickedCard === result.id ? (
     <Row className="result-details-card mx-auto">
       <Col className="result-details">
         <Card.Body>
           <Card.Title className="result-title">Desitnation Route <FontAwesomeIcon icon={faArrowRightToBracket} /></Card.Title>
           <Row>
-            <Col> 
+
               <Card.Text><FontAwesomeIcon icon={faPlaneDeparture} />{" "}{result.direction[0].departureLegs[0].departureCode}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[0].departureDate}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[0].departureTime}</Card.Text>
-            </Col>
-            <Col>
+
               <Card.Text><FontAwesomeIcon icon={faPlaneArrival} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalCode}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faCalendar} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalDate}</Card.Text>
               <Card.Text><FontAwesomeIcon icon={faClock} />{" "}{result.direction[0].departureLegs[sampleResults.length-1].arrivalTime}</Card.Text>
-            </Col>
+
           </Row>
         </Card.Body>
       </Col>
