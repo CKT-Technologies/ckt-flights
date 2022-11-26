@@ -18,9 +18,6 @@ function ResultCards({flightData, clickedCard, setClickedCard}) {
     setClickedCard("");
   };
   
-
-  flightData = flightData.flightData.flightData;
-  console.log(flightData.length);
   if (flightData.len === 0) {
     return <div></div>;
   }
