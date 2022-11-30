@@ -63,3 +63,13 @@
   color: azure;
   background-color: rgba(60, 49, 0, 0.6);
 }
+
+.map-button {
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.hide {
+  display: none;
+}

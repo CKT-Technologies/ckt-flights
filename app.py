@@ -17,11 +17,9 @@ token_payload = f"grant_type=client_credentials&client_id={CLIENT_ID}&client_sec
 token_headers = {"Content-Type": "application/x-www-form-urlencoded"}
 flight_url = "https://test.api.amadeus.com/v2/shopping/flight-offers"
 
-
 def get_token():
     token_respone = requests.post(
         token_url, data=token_payload, headers=token_headers).json()
-    print(token_respone)
     ACCESS_TOKEN = token_respone['access_token']
     return ACCESS_TOKEN
 
@@ -40,7 +38,8 @@ def not_found(e):
 def api():
     ACCESS_TOKEN = get_token()
     postData = json.loads(request.data)
-
+    
+    
     departCode = postData['departCode']
     arriveCode = postData['arriveCode']
     departDate = postData['departDate']
@@ -59,12 +58,11 @@ def api():
     headers = {"Authorization": f"Bearer {ACCESS_TOKEN}"}
     response = requests.get(flight_url, headers=headers,
                             params=params).json()
-
+    
     data = response['data']
-  
+    
     dict_list = []
     for d in range(len(data)):
-        flight = d+1
         id = data[d]['id']
         price = data[d]['price']['total']
         itinerary_list = []
@@ -102,7 +100,6 @@ def api():
             itinerary_list.append({f"{'departureLegs' if itinerary == 1 else 'returnLegs'}": segment_list})
         dict_list.append({f'id': id, 'price': price, "direction": itinerary_list })
 
-    print(dict_list)
     return jsonify(dict_list)
 
 if __name__ == '__main__':

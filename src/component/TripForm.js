@@ -21,45 +21,48 @@ function TripForm({
   returnDate,
   passengers,
   flightData,
+  showMap,
   setDepartCode,
   setArriveCode,
   setDepartDate,
   setReturnDate,
   setPassengers,
-  setFlightData
+  setFlightData,
+  setShowMap,
+  setStopCodes,
+  setClickedCard
 }) {
   const [alignment, setAlignment] = React.useState("round-trip");
 
   const handleOnSearch = (string, results) => {
     // onSearch will have the first callback parameter as
     // the string searched. For the second, the results.
-    // console.log(string, results);
     // return string, results;
   };
 
   const handleOnHover = (result) => {
     // the item hovered
-    // console.log(result);
     return result;
   };
 
   const handleOnSelectDepart = (item) => {
     // the item selected
     setDepartCode(item.code);
-    // console.log(item.code);
+    setFlightData([]);
+    setStopCodes({"departCodes": [], "returnCodes": []});
     // return item;
   };
-
+  
   const handleOnSelectArrive = (item) => {
     // the item selected
     setArriveCode(item.code);
-    // console.log(item.code);
+    setFlightData([]);
+    setStopCodes({"departCodes": [], "returnCodes": []});
     // return item;
   };
 
   const handleOnSelectPassengers = (item) => {
     // the item selected
-    console.log(item.target.value);
     setPassengers(item.target.value);
     // return item;
   };
@@ -68,7 +71,6 @@ function TripForm({
     // the item selected
     item = formatDate(item)
     setDepartDate(item);
-    console.log(item);
     // return item;
   };
   const
@@ -76,12 +78,10 @@ function TripForm({
     // the item selected
     item = formatDate(item)
     setReturnDate(item);
-    console.log(item);
     // return item;
   };
 
   const handleOnFocus = () => {
-    // console.log("Focused");
   };
 
   const formatDate = (date) => {
@@ -93,32 +93,27 @@ function TripForm({
 
   const handleOnSubmit = () => {
     setFlightData([]);
-
-    console.log(departCode);
-    console.log(arriveCode);
-    console.log(departDate);
-    console.log(returnDate);
-    console.log(passengers);
-
+    setStopCodes({"departCodes": [], "returnCodes": []});
+    setClickedCard("");
+    
+    
     
     axios.post("/api", 
-      {
-        "departCode": departCode,
-        "arriveCode": arriveCode,
-        "departDate": departDate,
-        "returnDate": returnDate,
-        "passengers": passengers
-      })
+    {
+      "departCode": departCode,
+      "arriveCode": arriveCode,
+      "departDate": departDate,
+      "returnDate": returnDate,
+      "passengers": passengers
+    })
       .then((res) => {
-        console.log(res.data);
         setFlightData(res.data);
       })
       .catch((err) => {
-        console.log(err);
       });
-
+      
     };
-
+    
   const formatResult = (item) => {
     return (
       <>
@@ -128,14 +123,12 @@ function TripForm({
       </>
     );
   };
-
+  
   const handleChange = (event, newAlignment) => {
     setAlignment(newAlignment);
-    console.log(alignment);
   };
-
   return (
-    <div className="container formContainer">
+    <div className={showMap ? "container formContainer hide" : "container formContainer"}>
       <div className="col-10 offset-1">
         <div className="container-fluid border rounded" id="form">
           <div className="row pt-3 px-3">
@@ -155,6 +148,7 @@ function TripForm({
                 variant="outlined"
                 color="success"
               >
+              {/* <span className={isLoading ? "loader" : null}></span> */}
                 Round-trip
                 <SyncAltIcon />
               </ToggleButton>
