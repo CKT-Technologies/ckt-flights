@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./RegisterPage.css";
 import logo from "../assets/logo.png";
 import Header from "../component/Header";
-import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
@@ -13,20 +12,6 @@ function RegisterPage() {
   const [airport, setAirport] = useState("MSP");
 
   const history = useNavigate();
-
-  const register = (e) => {
-    e.preventDefault();
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((auth) => {
-        // it successfully created a new user with email and password
-        if (auth) {
-          history("/");
-        }
-      })
-      .catch((error) => alert(error.message));
-  };
 
   return (
     <div>
@@ -87,9 +72,7 @@ function RegisterPage() {
             onChange={(e) => setAirport(e.target.value)}
           />
         </form>
-        <button onClick={register} className="registerButton">
-          Register!
-        </button>
+        <button className="registerButton">Register!</button>
       </div>
     </div>
   );

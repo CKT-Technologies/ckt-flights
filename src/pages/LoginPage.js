@@ -2,24 +2,12 @@ import React, { useState } from "react";
 import "./LoginPage.css";
 import port3 from "../assets/port3.png";
 import logo from "../assets/logo.png";
-import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const signIn = (e) => {
-    e.preventDefault();
-
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((auth) => {
-        history("/");
-      })
-      .catch((error) => alert(error.message));
-  };
 
   return (
     <div className="login">
@@ -47,9 +35,7 @@ function LoginPage() {
             required
           />
         </form>
-        <button onClick={signIn} className="loginButton">
-          Login!
-        </button>
+        <button className="loginButton">Login!</button>
         <a href="#">Forgot password?</a>
         <div className="create-new">
           <p>Don't have an account yet? &nbsp;</p>
@@ -59,7 +45,7 @@ function LoginPage() {
         </div>
       </div>
       <div className="right-side">
-        <img src={port3} alt="login banner" className='right-banner'/>
+        <img src={port3} alt="login banner" className="right-banner" />
         <div className="img-text">
           Find the best flights for your budget We help you find the cheapest
           flights by comparing prices from hundreds of airlines and travel
