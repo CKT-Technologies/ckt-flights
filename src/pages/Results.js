@@ -1,17 +1,16 @@
 import React from "react";
 import Header from "../component/Header";
-// import Map from "../component/Map";
 import Result from "../component/Result";
 import "./Results.css";
 
+
+
 function Results() {
+  const [clickedCard, setClickedCard] = React.useState("");
   return (
     <div className="results">
       <Header />
-      {/* <div className="row mx-0" id="map">
-        <Map />
-      </div> */}
-      <Result />
+      <Result clickedCard={clickedCard} setClickedCard={setClickedCard}/>
     </div>
   );
 }
