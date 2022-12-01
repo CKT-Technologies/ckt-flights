@@ -9,13 +9,37 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const login = async (values, onSubmitProps) => {
+    const loggedInResponse = await fetch("http://localhost:4000/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+    const loggedIn = await loggedInResponse.json();
+    onSubmitProps.resetForm();
+    if (loggedIn) {
+      dispatch(
+        setLogin({
+          user: loggedIn.user,
+          token: loggedIn.token,
+        })
+      );
+      navigate("/");
+    }
+  };
+
+  const handleFormSubmit = async (values, onSubmitProps) => {
+    if (isLogin) await login(values, onSubmitProps);
+    // if (isRegister) await register(values, onSubmitProps);
+  };
+
   return (
     <div className="login">
       <div className="left-side">
         <img src={logo} alt="CKT logo" />
         <h1>CKT, find all your travel needs!</h1>
         <h5>Please login to your account below</h5>
-        <form className="loginForm">
+        <form className="loginForm" onSubmit={handleFormSubmit}>
           <input
             className="loginInput"
             type="email"

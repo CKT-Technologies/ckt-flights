@@ -13,6 +13,27 @@ function RegisterPage() {
 
   const history = useNavigate();
 
+  const register = async (values, onSubmitProps) => {
+    const formData = new FormData();
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+
+    const savedUserResponse = await fetch(
+      "http://localhost:3001/auth/register",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const savedUser = await savedUserResponse.json();
+    onSubmitProps.resetForm();
+
+    if (savedUser) {
+      setPageType("login");
+    }
+  };
+
   return (
     <div>
       <Header />
